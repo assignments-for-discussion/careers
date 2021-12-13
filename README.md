@@ -2,4 +2,4 @@
 
 Welcome to Numocity Careers!
 
-[Graduates enter here](graduate-entrance.md)
+[Enter here to start the conversation](graduate-entrance.md)
