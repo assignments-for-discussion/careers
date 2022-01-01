@@ -2,10 +2,10 @@
 
 Let's have some code to discuss! Try a small assignment to get started.
 
-[C](https://classroom.github.com/a/xFLmqcbL)
+[C](https://classroom.github.com/a/Bgvprogu)
 
-[Java](https://classroom.github.com/a/pZQfOI0-)
+[Java](https://classroom.github.com/a/sCzOWnou)
 
-[Python](https://classroom.github.com/a/-7s0K_ki)
+[JavaScript](https://classroom.github.com/a/ACk5zgA0)
 
-[JavaScript](https://classroom.github.com/a/RQOfHkqG)
+[Python](https://classroom.github.com/a/S3FENKbw)
