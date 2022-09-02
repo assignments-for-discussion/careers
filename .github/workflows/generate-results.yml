@@ -1,0 +1,39 @@
+name: Submission results
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        required: true
+        description: Test Date (yyyy-mm-dd)
+
+jobs:
+  Welcome-all-submissions:
+    name: Submissions on ${{ github.event.inputs.date }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+    - name: Run
+      env:
+        GITHUBAPI_TOKEN: ${{ secrets.GITHUBAPI_TOKEN }}
+      run: |
+        python list_repos.py --date ${{ github.event.inputs.date }}
+    - name: Upload results
+      uses: actions/upload-artifact@v3
+      with:
+        name: results
+        path: ./results.csv
