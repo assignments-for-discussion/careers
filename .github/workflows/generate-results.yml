@@ -36,4 +36,8 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: results
-        path: ./results.csv
+        path: |
+          ./results.csv
+          ./changes.xlsx
+          ./segregated.xlsx
+          ./fordups.txt
