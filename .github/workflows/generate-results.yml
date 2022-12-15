@@ -32,6 +32,7 @@ jobs:
         GITHUBAPI_TOKEN: ${{ secrets.GITHUBAPI_TOKEN }}
       run: |
         python list_repos.py --date ${{ github.event.inputs.date }}
+        python grade-pulls.py
     - name: Upload results
       uses: actions/upload-artifact@v3
       with:
