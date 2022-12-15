@@ -1,8 +1,9 @@
 from github import Github
 import pandas as pd
+import os
 
 
-githubapi = Github('__personal_access_token_here__')
+githubapi = Github(os.environ['GITHUBAPI_TOKEN'])
 
 
 def changes(reponame):
@@ -17,7 +18,7 @@ def changes(reponame):
 
 
 def add_changes():
-    results = pd.read_excel('results-oct31.xlsx')
+    results = pd.read_csv('results.csv')
     success = results[results[' Status'] == ' success']
     for index, row in success.iterrows():
         reponame = row[' Repo url'].split('/')[-1]
