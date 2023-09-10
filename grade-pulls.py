@@ -26,6 +26,7 @@ def add_changes():
         success.loc[index, 'Changes'] = changes(reponame)
     print(success.head())
     success.to_excel('changes.xlsx')
+    print('wrote changes')
 
 
 def separate_addition_deletion(patch_text):
@@ -35,9 +36,14 @@ def separate_addition_deletion(patch_text):
             segregated_diffs['additions'] += f'{patch_line[1:]}\n'
         elif patch_line[0] == '-':
             segregated_diffs['deletions'] += f'{patch_line[1:]}\n'
-    patch_as_lines = patch_text.split('\n')
-    for line in patch_as_lines:
-        if len(line) > 0: segregate(line)
+    try:
+        patch_as_lines = patch_text.split('\n')
+        for line in patch_as_lines:
+            if len(line) > 0: segregate(line)
+    except:
+        segregated_diffs['additions'] = 'not extracted'
+        segregated_diffs['deletions'] = 'not extracted'
+        print('--not extracted--')
     return segregated_diffs
 
 
@@ -60,6 +66,6 @@ def text_for_dup_check():
         f.write(additions_digest)
 
 
-add_changes()
+# add_changes()
 segregate_changes()
 text_for_dup_check()
