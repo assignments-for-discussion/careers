@@ -66,6 +66,6 @@ def text_for_dup_check():
         f.write(additions_digest)
 
 
-# add_changes()
+add_changes()
 segregate_changes()
 text_for_dup_check()
